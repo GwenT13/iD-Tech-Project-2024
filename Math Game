@@ -1,0 +1,28 @@
+# The following program gives a user 20 basic multiplication questions, and times them to see how fast they complete it. It also tells you how many you got right or wrong.
+# Timer
+import time
+
+# Start
+start = time.time()
+
+import random
+
+correct_answers = 0
+answer_count = 20
+# Answering loop
+for x in range(answer_count):
+    a, b = random.randint(1, 10), random.randint(1,10)
+    answer = int(input(f"What is {a} x {b}: ",))
+    if answer == a * b:
+        correct_answers += 1
+        answer_count += 1
+    elif not answer == a * b:
+        answer_count += 1
+    elif answer_count == 20:
+        print(f"You got {correct_answers} out of {answer_count}!")
+
+# Results
+end = time.time()
+length = end - start
+print("It took", length, "seconds to answer 20 questions!")
+print(f"You got {correct_answers} out of 20")
