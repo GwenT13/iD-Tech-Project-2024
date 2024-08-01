@@ -1,25 +1,63 @@
-# The following program gives a user 20 basic multiplication questions, and times them to see how fast they complete it. It also tells you how many you got right or wrong.
+# The following program gives a user 20 basic multiplication questions, and times them to see how fast they complete it.
+# It also tells you how many you got right or wrong.
+# There are 2 options, one to start and end the program, and the other to select the difficulty of easy vs. hard.
 # Timer
+import random
 import time
 
 # Start
 start = time.time()
 
-import random
-
 correct_answers = 0
 answer_count = 20
+
+hard_mode = False
+easy_mode = False
+
+get_inputtwo = input("Choose a difficulty, easy, or hard: ")
+if get_inputtwo.lower() == "easy":
+    print("You have selected easy mode.")
+    easy_mode = True
+if get_inputtwo.lower() == "hard":
+    print("You have selected hard mode.")
+    hard_mode = True
+
+end_program = False
+while not end_program:
+    get_input = input("Say begin to begin, and say exit to cancel: ")
+    if get_input.lower() == "goodbye" or get_input.lower() == "exit":
+        print("Have a great day.")
+        end_program = True
+        exit()
+    if get_input == "begin":
+        end_program = True
+
 # Answering loop
-for x in range(answer_count):
-    a, b = random.randint(1, 10), random.randint(1,10)
-    answer = int(input(f"What is {a} x {b}: ",))
-    if answer == a * b:
-        correct_answers += 1
-        answer_count += 1
-    elif not answer == a * b:
-        answer_count += 1
-    elif answer_count == 20:
-        print(f"You got {correct_answers} out of {answer_count}!")
+while easy_mode == True:
+    for x in range(answer_count):
+        a, b = random.randint(1, 10), random.randint(1, 10)
+        answer = int(input(f"What is {a} x {b}: ", ))
+        if answer == a * b:
+            correct_answers += 1
+            answer_count -= 1
+        elif not answer == a * b:
+            answer_count -= 1
+        elif answer_count == 0:
+            print(f"You got {correct_answers} out of 20!")
+    easy_mode = False
+
+while hard_mode == True:
+    for x in range(answer_count):
+        a, b, c = random.randint(1, 10), random.randint(1, 10), random.randint(1, 10)
+        answer = int(input(f"What is {a} x {b} x {c}: ", ))
+        if answer == a * b * c:
+            correct_answers += 1
+            answer_count -= 1
+        elif not answer == a * b * c:
+            answer_count -= 1
+        elif answer_count == 0:
+            print(f"You got {correct_answers} out of 20!")
+    hard_mode = False
 
 # Results
 end = time.time()
