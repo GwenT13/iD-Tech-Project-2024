@@ -1,6 +1,5 @@
 # The following program gives a user 20 basic multiplication questions, and times them to see how fast they complete it.
 # It also tells you how many you got right or wrong.
-# There are 2 options, one to start and end the program, and the other to select the difficulty of easy vs. hard.
 # Timer
 import random
 import time
@@ -25,7 +24,7 @@ if get_inputtwo.lower() == "hard":
 end_program = False
 while not end_program:
     get_input = input("Say begin to begin, and say exit to cancel: ")
-    if get_input.lower() == "goodbye" or get_input.lower() == "exit":
+    if get_input.lower() == "exit":
         print("Have a great day.")
         end_program = True
         exit()
